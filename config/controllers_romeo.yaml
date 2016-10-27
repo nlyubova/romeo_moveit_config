@@ -11,6 +11,8 @@ controller_list:
       - RElbowYaw
       - RWristRoll
       - RWristYaw
+      - RWristPitch
+      - RGrasp
   - name: romeo_dcm/LeftArm_controller
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
@@ -22,19 +24,19 @@ controller_list:
       - LElbowYaw
       - LWristRoll
       - LWristYaw
+      - LWristPitch
+      - LGrasp
   - name: romeo_dcm/RightHand_controller
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
     default: true
     joints:
-      - RWristPitch
       - RHand
   - name: romeo_dcm/LeftHand_controller
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
     default: true
     joints:
-      - LWristPitch
       - LHand
   - name: romeo_dcm/Torso_controller
     action_ns: follow_joint_trajectory

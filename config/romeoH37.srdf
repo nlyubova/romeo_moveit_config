@@ -10,16 +10,10 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="left_arm">
-        <chain base_link="torso" tip_link="LWristYaw_link" />
-    </group>
-    <group name="arm_hand_left">
-        <chain base_link="torso" tip_link="l_gripper" />
+        <chain base_link="torso" tip_link="l_grasp_link" />
     </group>
     <group name="right_arm">
-        <chain base_link="torso" tip_link="RWristYaw_link" />
-    </group>
-    <group name="arm_hand_right">
-        <chain base_link="torso" tip_link="r_gripper" />
+        <chain base_link="torso" tip_link="r_grasp_link" />
     </group>
     <group name="head">
         <chain base_link="torso" tip_link="HeadRoll_link" />
@@ -39,15 +33,12 @@
         <link name="LThumb1_link" />
         <link name="LThumb2_link" />
         <link name="LThumb3_link" />
-        <link name="l_wrist" />
         <joint name="LHand" />
-        <joint name="LWristPitch" />
     </group>
     <group name="base">
         <joint name="virtual_odom" />
     </group>
     <group name="right_hand">
-        <link name="r_wrist" />
         <link name="RFinger11_link" />
         <link name="RFinger12_link" />
         <link name="RFinger13_link" />
@@ -61,7 +52,6 @@
         <link name="RThumb1_link" />
         <link name="RThumb2_link" />
         <link name="RThumb3_link" />
-        <joint name="RWristPitch" />
         <joint name="RHand" />
     </group>
 
@@ -97,14 +87,14 @@
     </group>
 
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="left_eef" parent_link="LWristYaw_link" group="left_hand" />
-    <end_effector name="right_eef" parent_link="RWristYaw_link" group="right_hand" />
+    <end_effector name="left_eef" parent_link="l_grasp_link" group="left_hand" />
+    <end_effector name="right_eef" parent_link="r_grasp_link" group="right_hand" />
 
     <end_effector name="left_foot" parent_link="l_ankle" group="left_foot" parent_group="left_leg" />
     <end_effector name="right_foot" parent_link="r_ankle" group="right_foot" parent_group="right_leg" />
 
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-    <virtual_joint name="virtual_odom" type="planar" parent_frame="odom" child_link="base_link" />
+    <virtual_joint name="virtual_odom" type="floating" parent_frame="odom" child_link="base_link" />
 
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
     <passive_joint name="virtual_odom" />
